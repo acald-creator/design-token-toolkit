@@ -11,7 +11,7 @@ import type {accessibilityAnalysis as AccessibilityAnalysis_accessibilityAnalysi
 
 import type {colorPalette as PaletteGeneration_colorPalette} from './PaletteGeneration.gen';
 
-import type {color as ColorJsIo_color} from './ColorJsIo.gen';
+import type {color as Culori_color} from './Culori.gen';
 
 import type {paletteOptions as PaletteGeneration_paletteOptions} from './PaletteGeneration.gen';
 
@@ -77,7 +77,7 @@ export type batchOperationResult = {
   }
   | {
     NAME: "ColorSpaceResult"; 
-    VAL: ColorJsIo_color[]
+    VAL: Culori_color[]
   }
   | {
     NAME: "IntelligenceResult"; 

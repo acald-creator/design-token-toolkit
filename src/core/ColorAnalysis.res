@@ -112,8 +112,8 @@ type accessibilityResult = {
 @genType
 let analyzeColorAI = (baseColor: string): intelligenceAnalysis => {
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
 
     // Extract OKLCH values
     let l = Array.getUnsafe(oklchCoords, 0)  // Lightness 0-1
@@ -219,35 +219,35 @@ let analyzeColorAI = (baseColor: string): intelligenceAnalysis => {
 @genType
 let generateHarmonyPalette = (baseColor: string, harmony: harmonyType): array<string> => {
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let h = Array.getUnsafe(oklchCoords, 2) // hue
     let l = Array.getUnsafe(oklchCoords, 0) // lightness
     let c = Array.getUnsafe(oklchCoords, 1) // chroma
 
     switch harmony {
     | #analogous => {
-        let color1 = ColorJsIo.oklch(l, c, mod_float(h -. 30.0, 360.0))->ColorJsIo.toHex
+        let color1 = Culori.oklchToHex(l, c, mod_float(h -. 30.0, 360.0))
         let color2 = baseColor
-        let color3 = ColorJsIo.oklch(l, c, mod_float(h +. 30.0, 360.0))->ColorJsIo.toHex
-        let color4 = ColorJsIo.oklch(l *. 1.1, c *. 0.8, mod_float(h -. 15.0, 360.0))->ColorJsIo.toHex
-        let color5 = ColorJsIo.oklch(l *. 0.9, c *. 0.8, mod_float(h +. 15.0, 360.0))->ColorJsIo.toHex
+        let color3 = Culori.oklchToHex(l, c, mod_float(h +. 30.0, 360.0))
+        let color4 = Culori.oklchToHex(l *. 1.1, c *. 0.8, mod_float(h -. 15.0, 360.0))
+        let color5 = Culori.oklchToHex(l *. 0.9, c *. 0.8, mod_float(h +. 15.0, 360.0))
         [color1, color2, color3, color4, color5]
       }
     | #complementary => {
-        let complementary = ColorJsIo.oklch(l, c, mod_float(h +. 180.0, 360.0))->ColorJsIo.toHex
+        let complementary = Culori.oklchToHex(l, c, mod_float(h +. 180.0, 360.0))
         [baseColor, complementary]
       }
     | #triadic => {
-        let triadic1 = ColorJsIo.oklch(l, c, mod_float(h +. 120.0, 360.0))->ColorJsIo.toHex
-        let triadic2 = ColorJsIo.oklch(l, c, mod_float(h +. 240.0, 360.0))->ColorJsIo.toHex
+        let triadic1 = Culori.oklchToHex(l, c, mod_float(h +. 120.0, 360.0))
+        let triadic2 = Culori.oklchToHex(l, c, mod_float(h +. 240.0, 360.0))
         [baseColor, triadic1, triadic2]
       }
     | #monochromatic => {
-        let lighter1 = ColorJsIo.oklch(Js.Math.min_float(0.95, l +. 0.2), c, h)->ColorJsIo.toHex
-        let lighter2 = ColorJsIo.oklch(Js.Math.min_float(0.9, l +. 0.1), c, h)->ColorJsIo.toHex
-        let darker1 = ColorJsIo.oklch(Js.Math.max_float(0.1, l -. 0.1), c, h)->ColorJsIo.toHex
-        let darker2 = ColorJsIo.oklch(Js.Math.max_float(0.05, l -. 0.2), c, h)->ColorJsIo.toHex
+        let lighter1 = Culori.oklchToHex(Js.Math.min_float(0.95, l +. 0.2), c, h)
+        let lighter2 = Culori.oklchToHex(Js.Math.min_float(0.9, l +. 0.1), c, h)
+        let darker1 = Culori.oklchToHex(Js.Math.max_float(0.1, l -. 0.1), c, h)
+        let darker2 = Culori.oklchToHex(Js.Math.max_float(0.05, l -. 0.2), c, h)
         [lighter1, lighter2, baseColor, darker1, darker2]
       }
     }
@@ -282,8 +282,8 @@ let generateAccessibleCombination = (backgroundColor: string, ~textColor: option
   "contrast": float,
 } => {
   try {
-    let bgColor = ColorJsIo.parseColor(backgroundColor)
-    let bgCoords = ColorJsIo.getOklchCoords(bgColor)
+    let bgColor = Culori.parseToOklch(backgroundColor)
+    let bgCoords = Culori.getOklchCoords(bgColor)
     let bgLightness = Array.getUnsafe(bgCoords, 0)
 
     // Choose text color based on background lightness
@@ -347,11 +347,11 @@ let generateSemanticColorsAI = (brandColors: brandColors): {
   Js.Dict.set(accessibility, "info", validateAccessibility(info, "#FFFFFF", ()).isValid)
 
   // Neutral - calculated based on brand colors
-  let primaryColor = ColorJsIo.parseColor(brandColors.primary)
-  let primaryCoords = ColorJsIo.getOklchCoords(primaryColor)
+  let primaryColor = Culori.parseToOklch(brandColors.primary)
+  let primaryCoords = Culori.getOklchCoords(primaryColor)
   let neutral = try {
     let h = Array.getUnsafe(primaryCoords, 2)
-    ColorJsIo.oklch(0.5, 0.05, h)->ColorJsIo.toHex // Low chroma, mid lightness
+    Culori.oklchToHex(0.5, 0.05, h) // Low chroma, mid lightness
   } catch {
   | _ => "#6b7280" // Fallback neutral
   }
@@ -393,8 +393,8 @@ let suggestBrandColorsAI = (baseColor: string): {
   let alternatives = ["#6366f1", "#10b981", "#f59e0b", "#ef4444"] // Modern trend colors
 
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let h = Array.getUnsafe(oklchCoords, 2)
     let l = Array.getUnsafe(oklchCoords, 0)
     let c = Array.getUnsafe(oklchCoords, 1)
@@ -411,7 +411,7 @@ let suggestBrandColorsAI = (baseColor: string): {
     }
 
     // Generate complementary suggestion
-    let complementary = ColorJsIo.oklch(l, c, mod_float(h +. 180.0, 360.0))->ColorJsIo.toHex
+    let complementary = Culori.oklchToHex(l, c, mod_float(h +. 180.0, 360.0))
     suggestions->Belt.Array.push({
       "color": complementary,
       "reasoning": "Complementary color creates visual balance and harmony",
@@ -420,7 +420,7 @@ let suggestBrandColorsAI = (baseColor: string): {
     })
 
     // Generate analogous suggestions
-    let analogous1 = ColorJsIo.oklch(l, c, mod_float(h +. 30.0, 360.0))->ColorJsIo.toHex
+    let analogous1 = Culori.oklchToHex(l, c, mod_float(h +. 30.0, 360.0))
     suggestions->Belt.Array.push({
       "color": analogous1,
       "reasoning": "Analogous color maintains harmony while adding variety",
@@ -428,7 +428,7 @@ let suggestBrandColorsAI = (baseColor: string): {
       "category": #accent,
     })
 
-    let analogous2 = ColorJsIo.oklch(l, c, mod_float(h -. 30.0, 360.0))->ColorJsIo.toHex
+    let analogous2 = Culori.oklchToHex(l, c, mod_float(h -. 30.0, 360.0))
     suggestions->Belt.Array.push({
       "color": analogous2,
       "reasoning": "Creates a cohesive color family",
@@ -438,7 +438,7 @@ let suggestBrandColorsAI = (baseColor: string): {
 
     // Accessibility improvement suggestion
     if currentAnalysis.properties.accessibility == #poor {
-      let improved = ColorJsIo.oklch(if l > 0.5 { 0.3 } else { 0.7 }, c, h)->ColorJsIo.toHex
+      let improved = Culori.oklchToHex(if l > 0.5 { 0.3 } else { 0.7 }, c, h)
       suggestions->Belt.Array.push({
         "color": improved,
         "reasoning": "Improved contrast for better accessibility",
@@ -474,8 +474,8 @@ let suggestBrandColorsAI = (baseColor: string): {
 @genType
 let analyzeColorIntelligence = (baseColor: string): intelligenceAnalysis => {
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let l = Array.getUnsafe(oklchCoords, 0) // Lightness
     let c = Array.getUnsafe(oklchCoords, 1) // Chroma (similar to saturation)
     let h = Array.getUnsafe(oklchCoords, 2) // Hue
@@ -589,8 +589,8 @@ let generateIntelligentPalette = (
   let suggestions = Belt.Array.copy(analysis.suggestions)
 
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let l = Array.getUnsafe(oklchCoords, 0)
     let c = Array.getUnsafe(oklchCoords, 1)
     let h = Array.getUnsafe(oklchCoords, 2)
@@ -612,12 +612,11 @@ let generateIntelligentPalette = (
     | Some(palette) when saturationAdj != 0.0 || lightnessAdj != 0.0 => {
         // Create adjusted colors for each palette entry
         let adjusted100 = try {
-          ColorJsIo.oklch(
+          Culori.oklchToHex(
             Js.Math.max_float(0.05, Js.Math.min_float(0.95, l +. lightnessAdj)),
             Js.Math.max_float(0.0, c +. saturationAdj),
             h
-          )->ColorJsIo.toHex
-        } catch { | _ => palette["100"] }
+          )        } catch { | _ => palette["100"] }
 
         // For simplicity, just adjust the key colors and keep others
         Some({
@@ -701,8 +700,8 @@ let generateColorPaletteEnhanced = (
   ()
 ): option<PaletteGeneration.colorPalette> => {
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let l = Array.getUnsafe(oklchCoords, 0)
     let c = Array.getUnsafe(oklchCoords, 1)
     let h = Array.getUnsafe(oklchCoords, 2)
@@ -712,8 +711,7 @@ let generateColorPaletteEnhanced = (
 
     let colors = Belt.Array.mapWithIndex(lightnessScale, (index, lightness) => {
       try {
-        ColorJsIo.oklch(lightness, c, h)->ColorJsIo.toHex
-      } catch {
+        Culori.oklchToHex(lightness, c, h)      } catch {
       | _ => baseColor // Fallback to original color
       }
     })
@@ -743,8 +741,8 @@ let generateHarmoniousPaletteEnhanced = (
   ()
 ): array<string> => {
   try {
-    let color = ColorJsIo.parseColor(baseColor)
-    let oklchCoords = ColorJsIo.getOklchCoords(color)
+    let color = Culori.parseToOklch(baseColor)
+    let oklchCoords = Culori.getOklchCoords(color)
     let l = Array.getUnsafe(oklchCoords, 0)
     let c = Array.getUnsafe(oklchCoords, 1)
     let h = Array.getUnsafe(oklchCoords, 2)
@@ -752,27 +750,27 @@ let generateHarmoniousPaletteEnhanced = (
     switch harmony {
     | #analogous => {
         // Colors 30 degrees apart
-        let color1 = ColorJsIo.oklch(l, c, mod_float(h -. 30.0, 360.0))->ColorJsIo.toHex
-        let color2 = ColorJsIo.oklch(l, c, h)->ColorJsIo.toHex
-        let color3 = ColorJsIo.oklch(l, c, mod_float(h +. 30.0, 360.0))->ColorJsIo.toHex
-        let color4 = ColorJsIo.oklch(l *. 0.8, c, mod_float(h +. 15.0, 360.0))->ColorJsIo.toHex
-        let color5 = ColorJsIo.oklch(l *. 1.2, c, mod_float(h -. 15.0, 360.0))->ColorJsIo.toHex
+        let color1 = Culori.oklchToHex(l, c, mod_float(h -. 30.0, 360.0))
+        let color2 = Culori.oklchToHex(l, c, h)
+        let color3 = Culori.oklchToHex(l, c, mod_float(h +. 30.0, 360.0))
+        let color4 = Culori.oklchToHex(l *. 0.8, c, mod_float(h +. 15.0, 360.0))
+        let color5 = Culori.oklchToHex(l *. 1.2, c, mod_float(h -. 15.0, 360.0))
         [color1, color2, color3, color4, color5]
       }
     | #complementary => {
-        let complementary = ColorJsIo.oklch(l, c, mod_float(h +. 180.0, 360.0))->ColorJsIo.toHex
+        let complementary = Culori.oklchToHex(l, c, mod_float(h +. 180.0, 360.0))
         [baseColor, complementary]
       }
     | #triadic => {
-        let triadic1 = ColorJsIo.oklch(l, c, mod_float(h +. 120.0, 360.0))->ColorJsIo.toHex
-        let triadic2 = ColorJsIo.oklch(l, c, mod_float(h +. 240.0, 360.0))->ColorJsIo.toHex
+        let triadic1 = Culori.oklchToHex(l, c, mod_float(h +. 120.0, 360.0))
+        let triadic2 = Culori.oklchToHex(l, c, mod_float(h +. 240.0, 360.0))
         [baseColor, triadic1, triadic2]
       }
     | #monochromatic => {
-        let lighter1 = ColorJsIo.oklch(Js.Math.min_float(0.95, l +. 0.2), c *. 0.8, h)->ColorJsIo.toHex
-        let lighter2 = ColorJsIo.oklch(Js.Math.min_float(0.95, l +. 0.1), c *. 0.9, h)->ColorJsIo.toHex
-        let darker1 = ColorJsIo.oklch(Js.Math.max_float(0.05, l -. 0.1), c *. 0.9, h)->ColorJsIo.toHex
-        let darker2 = ColorJsIo.oklch(Js.Math.max_float(0.05, l -. 0.2), c *. 0.8, h)->ColorJsIo.toHex
+        let lighter1 = Culori.oklchToHex(Js.Math.min_float(0.95, l +. 0.2), c *. 0.8, h)
+        let lighter2 = Culori.oklchToHex(Js.Math.min_float(0.95, l +. 0.1), c *. 0.9, h)
+        let darker1 = Culori.oklchToHex(Js.Math.max_float(0.05, l -. 0.1), c *. 0.9, h)
+        let darker2 = Culori.oklchToHex(Js.Math.max_float(0.05, l -. 0.2), c *. 0.8, h)
         [lighter1, lighter2, baseColor, darker1, darker2]
       }
     }

@@ -1,6 +1,6 @@
 {
   "name": "design-token-toolkit",
-  "version": "1.1.0-beta.1",
+  "version": "1.1.0-beta.2",
   "description": "🎨 High-performance design token toolkit with ReScript optimization (5-7x faster)",
   "keywords": [
     "design-tokens",
@@ -44,17 +44,16 @@
   },
   "dependencies": {
     "@rescript/core": "1.6.1",
-    "@types/chroma-js": "^3.1.1",
-    "chroma-js": "^3.1.2",
-    "color": "^5.0.2",
-    "colorjs.io": "^0.5.2",
+    "color-bits": "^1.1.1",
     "commander": "^14.0.1",
+    "culori": "^4.0.2",
     "inquirer": "^12.9.6",
     "ollama": "^0.6.0",
     "path": "^0.12.7",
     "rescript": "11.1.4"
   },
   "devDependencies": {
+    "@types/culori": "^4.0.1",
     "@types/fs-extra": "^11.0.4",
     "fs-extra": "^11.3.2",
     "style-dictionary": "^5.0.4",

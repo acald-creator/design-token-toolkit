@@ -59,7 +59,7 @@ type batchOperationResult = {
     | #IntelligenceResult(Js.Json.t) // Js.Json.t doesn't exist yet
     | #PaletteResult(PaletteGeneration.colorPalette)
     | #HarmonyResult(array<string>)
-    | #ColorSpaceResult(array<ColorJsIo.color>)
+    | #ColorSpaceResult(array<Culori.color>)
   ],
 }
 

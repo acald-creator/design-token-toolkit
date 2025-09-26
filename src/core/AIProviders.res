@@ -110,13 +110,12 @@ let rec generateLocalIntelligencePalette = (request: paletteRequest): enhancedPa
 
     // Generate secondary color using OKLCH color space
     let secondaryColor = try {
-      let color = ColorJsIo.parseColor(request.baseColor)
-      let oklchCoords = ColorJsIo.getOklchCoords(color)
+      let color = Culori.parseToOklch(request.baseColor)
+      let oklchCoords = Culori.getOklchCoords(color)
       let h = Array.getUnsafe(oklchCoords, 2)
       let l = Array.getUnsafe(oklchCoords, 0)
       let c = Array.getUnsafe(oklchCoords, 1)
-      ColorJsIo.oklch(l, c, mod_float(h +. 30.0, 360.0))->ColorJsIo.toHex
-    } catch {
+      Culori.oklchToHex(l, c, mod_float(h +. 30.0, 360.0))    } catch {
     | _ => request.baseColor
     }
 
@@ -165,10 +164,10 @@ let rec generateLocalIntelligencePalette = (request: paletteRequest): enhancedPa
 
     // Generate neutral palette
     let neutralColor = try {
-      let color = ColorJsIo.parseColor(request.baseColor)
-      let oklchCoords = ColorJsIo.getOklchCoords(color)
+      let color = Culori.parseToOklch(request.baseColor)
+      let oklchCoords = Culori.getOklchCoords(color)
       let h = Array.getUnsafe(oklchCoords, 2)
-      ColorJsIo.oklch(0.5, 0.05, h)->ColorJsIo.toHex // Low chroma neutral
+      Culori.oklchToHex(0.5, 0.05, h) // Low chroma neutral
     } catch {
     | _ => "#6b7280"
     }
@@ -248,13 +247,13 @@ let rec generateLocalIntelligencePalette = (request: paletteRequest): enhancedPa
 @genType
 and generateRuleBasedPalette = (request: paletteRequest): enhancedPalette => {
   try {
-    let baseColor = ColorJsIo.parseColor(request.baseColor)
-    let baseCoords = ColorJsIo.getOklchCoords(baseColor)
+    let baseColor = Culori.parseToOklch(request.baseColor)
+    let baseCoords = Culori.getOklchCoords(baseColor)
     let h = Array.getUnsafe(baseCoords, 2)
     let c = Array.getUnsafe(baseCoords, 1)
 
     // Generate simple but effective scales using OKLCH
-    let generateSimpleScale = (color: ColorJsIo.color): Js.Dict.t<styleDictionaryToken> => {
+    let generateSimpleScale = (_color: string): Js.Dict.t<styleDictionaryToken> => {
       let tokens = Js.Dict.empty()
       let steps = [50.0, 100.0, 200.0, 300.0, 400.0, 500.0, 600.0, 700.0, 800.0, 900.0]
 
@@ -262,8 +261,7 @@ and generateRuleBasedPalette = (request: paletteRequest): enhancedPalette => {
         let lightness = 0.95 -. (step /. 1000.0) *. 0.9
         let stepStr = Belt.Float.toString(step)->Js.String2.replace(".0", "")
         let colorHex = try {
-          ColorJsIo.oklch(lightness, c, h)->ColorJsIo.toHex
-        } catch {
+          Culori.oklchToHex(lightness, c, h)        } catch {
         | _ => request.baseColor
         }
         Js.Dict.set(tokens, stepStr, {"value": colorHex})
@@ -274,20 +272,20 @@ and generateRuleBasedPalette = (request: paletteRequest): enhancedPalette => {
 
     // Generate secondary and neutral variations
     let secondaryColor = try {
-      ColorJsIo.oklch(Array.getUnsafe(baseCoords, 0), c, mod_float(h +. 30.0, 360.0))
+      Culori.oklchToHex(Array.getUnsafe(baseCoords, 0), c, mod_float(h +. 30.0, 360.0))
     } catch {
-    | _ => baseColor
+    | _ => request.baseColor
     }
 
     let neutralColor = try {
-      ColorJsIo.oklch(0.5, 0.05, h) // Low chroma neutral
+      Culori.oklchToHex(0.5, 0.05, h) // Low chroma neutral
     } catch {
-    | _ => ColorJsIo.parseColor("#6b7280")
+    | _ => "#6b7280"
     }
 
     let tokens: styleDictionaryTokens = {
       "color": {
-        "primary": generateSimpleScale(baseColor),
+        "primary": generateSimpleScale(request.baseColor),
         "secondary": generateSimpleScale(secondaryColor),
         "neutral": generateSimpleScale(neutralColor),
         "semantic": None,

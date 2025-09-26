@@ -1,18 +1,68 @@
 {
   "name": "design-token-toolkit",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "🎨 High-performance design token toolkit with ReScript optimization (5-7x faster)",
+  "keywords": [
+    "design-tokens",
+    "rescript",
+    "color",
+    "accessibility",
+    "cli",
+    "bun",
+    "style-dictionary",
+    "performance"
+  ],
+  "license": "MIT",
+  "author": "Antonette Caldwell",
+  "type": "module",
+  "main": "./dist/src/cli.js",
+  "bin": {
+    "design-tokens": "./dist/src/cli.js",
+    "design-tokens-bun": "./dist/src/cli-bun.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "doc/"
+  ],
   "scripts": {
+    "benchmark:all": "npm run build && node --expose-gc dist/benchmarks/run-all-benchmarks.js",
+    "benchmark:libraries": "npm run build && node --expose-gc dist/benchmarks/color-library-benchmark.js",
+    "build": "bun run build:rescript && bun run build:typescript",
+    "build:all": "bun run build:cli && bun run build:bun-binary",
+    "build:bun-binary": "bun build src/cli-bun.ts --compile --outfile dist/design-tokens-bun --target bun",
+    "build:cli": "bun run build && chmod +x dist/src/cli.js dist/src/cli-bun.js",
+    "build:rescript": "bun run res:build",
+    "build:typescript": "tsc",
+    "cli:test": "bun run build:cli && ./dist/src/cli.js --help",
+    "cli:test-bun": "bun run build:cli && bun ./dist/src/cli-bun.js --help",
+    "prepublishOnly": "bun run build:all",
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript -w"
   },
-  "keywords": [
-    "rescript"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@rescript/core": "1.6.1",
+    "@types/chroma-js": "^3.1.1",
+    "chroma-js": "^3.1.2",
+    "color": "^5.0.2",
+    "colorjs.io": "^0.5.2",
+    "commander": "^14.0.1",
+    "inquirer": "^12.9.6",
+    "ollama": "^0.6.0",
+    "path": "^0.12.7",
     "rescript": "11.1.4"
-  }
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "fs-extra": "^11.3.2",
+    "style-dictionary": "^5.0.4",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=16.0.0"
+  },
+  "preferGlobal": true
 }

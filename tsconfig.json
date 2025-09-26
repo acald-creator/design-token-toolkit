@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.AsyncIterable", "DOM.Iterable"],
+    "outDir": "./dist",
+    "rootDir": ".",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@types/*": ["./src/types/*"],
+      "@generators/*": ["./src/generators/*"],
+      "@rescript/core/*": ["./src/core/*.gen.js"],
+      "@rescript/math": ["./src/core/ColorMath.gen.js"],
+      "@rescript/colorjs": ["./src/core/ColorJsIo.gen.js"],
+      "@rescript/analysis": ["./src/core/ColorAnalysis.gen.js"],
+      "@rescript/palette": ["./src/core/PaletteGeneration.gen.js"],
+      "@rescript/accessibility": ["./src/core/AccessibilityAnalysis.gen.js"],
+      "@rescript/integration": ["./src/core/IntegrationLayer.gen.js"]
+    }
+  },
+  "include": ["src/**/*", "benchmarks/**/*"],
+  "exclude": ["node_modules", "dist", "lib", "**/*.test.ts"]
+}

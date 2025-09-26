@@ -1,7 +1,7 @@
 {
   "name": "design-token-toolkit",
   "sources": {
-    "dir": "src",
+    "dir": "src/core",
     "subdirs": true
   },
   "package-specs": {
@@ -14,5 +14,19 @@
   ],
   "bsc-flags": [
     "-open RescriptCore"
-  ]
+  ],
+  "gentypeconfig": {
+    "module": "esmodule",
+    "moduleResolution": "node",
+    "generatedFileExtension": ".gen.ts",
+    "shims": {},
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  },
+  "warnings": {
+    "error": "+101"
+  },
+  "namespace": false
 }

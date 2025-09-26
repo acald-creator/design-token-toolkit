@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Do not edit directly, this file was auto-generated.
+-->
+<resources>
+  <color name="colors_black">#ff000000</color>
+  <color name="colors_white">#ffffffff</color>
+  <color name="colors_orange_100">#fffffaf0</color>
+  <color name="colors_orange_200">#fffeebc8</color>
+  <color name="colors_orange_300">#fffbd38d</color>
+  <color name="colors_orange_400">#fff6ad55</color>
+  <color name="colors_orange_500">#ffed8936</color>
+  <color name="colors_orange_600">#ffdd6b20</color>
+  <color name="colors_orange_700">#ffc05621</color>
+  <color name="colors_orange_800">#ff9c4221</color>
+  <color name="colors_orange_900">#ff7b341e</color>
+  <color name="colors_test_primary_50">#ffe5f0fd</color>
+  <color name="colors_test_primary_100">#ffc7d3e6</color>
+  <color name="colors_test_primary_200">#ff96b2da</color>
+  <color name="colors_test_primary_300">#ff7395ca</color>
+  <color name="colors_test_primary_400">#ff566bc9</color>
+  <color name="colors_test_primary_500">#ff4a54c8</color>
+  <color name="colors_test_primary_600">#ff473ea7</color>
+  <color name="colors_test_primary_700">#ff3e44b6</color>
+  <color name="colors_test_primary_800">#ff34335f</color>
+  <color name="colors_test_primary_900">#ff2d288f</color>
+  <color name="colors_test_secondary_50">#ffedf5ee</color>
+  <color name="colors_test_secondary_100">#ffd9e4e8</color>
+  <color name="colors_test_secondary_200">#ffc3daef</color>
+  <color name="colors_test_secondary_300">#ffa7b6ca</color>
+  <color name="colors_test_secondary_400">#ff708f97</color>
+  <color name="colors_test_secondary_500">#ff536977</color>
+  <color name="colors_test_secondary_600">#ff42546d</color>
+  <color name="colors_test_secondary_700">#ff32344f</color>
+  <color name="colors_test_secondary_800">#ff24283e</color>
+  <color name="colors_test_secondary_900">#ff191b28</color>
+  <color name="colors_test_neutral_50">#fff7fafc</color>
+  <color name="colors_test_neutral_100">#fff1f5f9</color>
+  <color name="colors_test_neutral_200">#ffe2e8f0</color>
+  <color name="colors_test_neutral_300">#ffcbd5e1</color>
+  <color name="colors_test_neutral_400">#ff94a3b8</color>
+  <color name="colors_test_neutral_500">#ff64748b</color>
+  <color name="colors_test_neutral_600">#ff475569</color>
+  <color name="colors_test_neutral_700">#ff334155</color>
+  <color name="colors_test_neutral_800">#ff1e293b</color>
+  <color name="colors_test_neutral_900">#ff0f172a</color>
+</resources>

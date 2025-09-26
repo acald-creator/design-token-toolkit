@@ -1,0 +1,124 @@
+{
+  "color": {
+    "primary": {
+      "50": {
+        "value": "#f7fafb"
+      },
+      "100": {
+        "value": "#e5ecf9"
+      },
+      "200": {
+        "value": "#c8d6ea"
+      },
+      "300": {
+        "value": "#96a5bf"
+      },
+      "400": {
+        "value": "#7180ac"
+      },
+      "500": {
+        "value": "#10b981"
+      },
+      "700": {
+        "value": "#0393e6"
+      },
+      "// Original base color, modified to be more vibrant and energetic for the audience's emotional tone. Increased saturation from #34c759 to #10b981 to make it pop. This is also in line with the requested contrast between primary and secondary colors as well as the neutral palette. ": "600",
+      "// Secondary color, opposite of original base, used to provide a visual separation. Made more vibrant by increasing saturation.": {
+        "value": "#03a9f4"
+      },
+      "// Secondary color, same as above but with slightly higher lightness.": "800",
+      "// Neutral color, a variation of the original base color, to provide background and neutral content with sufficient contrast. Increased saturation to make it more vibrant while still accessible.": {
+        "value": "#0d6efd"
+      }
+    },
+    "secondary": {
+      "50": {
+        "value": "#e5f2fd"
+      },
+      "100": {
+        "value": "#c7e4f1"
+      },
+      "200": {
+        "value": "#96dcfe"
+      },
+      "300": {
+        "value": "#6494cf"
+      },
+      "400": {
+        "value": "#4689b7"
+      },
+      "500": {
+        "value": "#03a9f4"
+      },
+      "700": {
+        "value": "#0984e3"
+      },
+      "// Secondary color, used to provide a visual separation and highlight important information.": "600",
+      "// Primary color, modified to be more vibrant and energetic for the audience's emotional tone. Increased saturation from #34c759 to #10b981 to make it pop.": {
+        "value": "#0d6efd"
+      },
+      "// Secondary color, same as above but with slightly higher lightness.": "800",
+      "// Neutral color, a variation of the original base color, to provide background and neutral content with sufficient contrast. Increased saturation to make it more vibrant while still accessible.": {
+        "value": "#03a9f4"
+      }
+    },
+    "neutral": {
+      "50": {
+        "value": "#f7f7f7"
+      },
+      "100": {
+        "value": "#e5e5e5"
+      },
+      "200": {
+        "value": "#c8c8c8"
+      },
+      "300": {
+        "value": "#a6a6a6"
+      },
+      "400": {
+        "value": "#777777"
+      },
+      "500": {
+        "value": "#555555"
+      },
+      "700": {
+        "value": "#222222"
+      },
+      "900": {
+        "value": "#1a1d23"
+      },
+      "// Neutral color, used for background and neutral content to provide sufficient contrast with the primary and secondary colors.": "600",
+      "// Secondary color, same as above but with slightly higher lightness.": {
+        "value": "#333333"
+      },
+      "// Neutral color, darker variation, used for background and neutral content to provide sufficient contrast with the primary and secondary colors.": "800",
+      "// Primary color, modified to be more vibrant and energetic for the audience's emotional tone. Increased saturation from #34c759 to #10b981 to make it pop.": {
+        "value": "#0d6efd"
+      }
+    }
+  },
+  "metadata": {
+    "provider": "Ollama",
+    "confidence": 0.85,
+    "reasoning": "AI-generated vibrant palette optimized for tech use",
+    "accessibility": {
+      "wcagCompliance": "AA",
+      "contrastIssues": [],
+      "colorBlindnessCompatible": true,
+      "recommendations": []
+    },
+    "context": {
+      "industry": "tech",
+      "audience": "professionals",
+      "medium": "web",
+      "accessibility": "high-contrast",
+      "cultural": "global",
+      "emotional": "energetic"
+    },
+    "accessibilityScore": 46,
+    "generatedAt": "2025-09-26T14:01:48.901Z",
+    "version": "2.0",
+    "processingTime": 21321.402125,
+    "analysisMethod": "ReScript"
+  }
+}

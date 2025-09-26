@@ -1,0 +1,124 @@
+{
+  "color": {
+    "primary": {
+      "50": {
+        "value": "#f8fafc"
+      },
+      "100": {
+        "value": "#e5e7eb"
+      },
+      "200": {
+        "value": "#d1d4dd"
+      },
+      "300": {
+        "value": "#b2bec3"
+      },
+      "400": {
+        "value": "#969aa0"
+      },
+      "500": {
+        "value": "#6366f1"
+      },
+      "600": {
+        "value": "#475569"
+      },
+      "700": {
+        "value": "#334155"
+      },
+      "800": {
+        "value": "#23415a"
+      },
+      "900": {
+        "value": "#132e41"
+      }
+    },
+    "secondary": {
+      "50": {
+        "value": "#eff1f2"
+      },
+      "100": {
+        "value": "#d7dde4"
+      },
+      "200": {
+        "value": "#c3ced5"
+      },
+      "300": {
+        "value": "#a8b3bd"
+      },
+      "400": {
+        "value": "#8699bf"
+      },
+      "500": {
+        "value": "#667aae"
+      },
+      "600": {
+        "value": "#56667f"
+      },
+      "700": {
+        "value": "#435466"
+      },
+      "800": {
+        "value": "#2d3c52"
+      },
+      "900": {
+        "value": "#1a2638"
+      }
+    },
+    "neutral": {
+      "50": {
+        "value": "#f9f9f9"
+      },
+      "100": {
+        "value": "#f7f7f7"
+      },
+      "200": {
+        "value": "#f2f2f2"
+      },
+      "300": {
+        "value": "#e5e5e5"
+      },
+      "400": {
+        "value": "#d3d3d3"
+      },
+      "500": {
+        "value": "#ccc"
+      },
+      "600": {
+        "value": "#b3b3b3"
+      },
+      "700": {
+        "value": "#a0a0a0"
+      },
+      "800": {
+        "value": "#808080"
+      },
+      "900": {
+        "value": "#666666"
+      }
+    }
+  },
+  "metadata": {
+    "provider": "Ollama",
+    "confidence": 0.85,
+    "reasoning": "AI-generated minimal palette optimized for tech use",
+    "accessibility": {
+      "wcagCompliance": "AA",
+      "contrastIssues": [],
+      "colorBlindnessCompatible": true,
+      "recommendations": []
+    },
+    "context": {
+      "industry": "tech",
+      "audience": "professionals",
+      "medium": "web",
+      "accessibility": "high-contrast",
+      "cultural": "global",
+      "emotional": "calm"
+    },
+    "accessibilityScore": 46,
+    "generatedAt": "2025-09-26T14:02:21.732Z",
+    "version": "2.0",
+    "processingTime": 13356.183,
+    "analysisMethod": "ReScript"
+  }
+}

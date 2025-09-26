@@ -1,0 +1,126 @@
+{
+  "color": {
+    "ai-generated-primary": {
+      "50": {
+        "value": "#f8fafc"
+      },
+      "100": {
+        "value": "#f1f5f9"
+      },
+      "200": {
+        "value": "#e2e8f0"
+      },
+      "300": {
+        "value": "#cbd5e1"
+      },
+      "400": {
+        "value": "#94a3b8"
+      },
+      "500": {
+        "value": "#64748b"
+      },
+      "600": {
+        "value": "#475569"
+      },
+      "700": {
+        "value": "#334155"
+      },
+      "800": {
+        "value": "#1e293b"
+      },
+      "900": {
+        "value": "#0f172a"
+      }
+    },
+    "ai-generated-secondary": {
+      "50": {
+        "value": "#e5edee"
+      },
+      "100": {
+        "value": "#d4dae6"
+      },
+      "200": {
+        "value": "#c2ced9"
+      },
+      "300": {
+        "value": "#a8b3cd"
+      },
+      "400": {
+        "value": "#7f8491"
+      },
+      "500": {
+        "value": "#566778"
+      },
+      "600": {
+        "value": "#45537c"
+      },
+      "700": {
+        "value": "#303e5a"
+      },
+      "800": {
+        "value": "#212f46"
+      },
+      "900": {
+        "value": "#13171f"
+      }
+    },
+    "ai-generated-neutral": {
+      "50": {
+        "value": "#ffffff"
+      },
+      "100": {
+        "value": "#f7f8fa"
+      },
+      "200": {
+        "value": "#e5e6eb"
+      },
+      "300": {
+        "value": "#d3d4da"
+      },
+      "400": {
+        "value": "#c9cacea"
+      },
+      "500": {
+        "value": "#b2b3be"
+      },
+      "600": {
+        "value": "#a1a2ae"
+      },
+      "700": {
+        "value": "#80848f"
+      },
+      "800": {
+        "value": "#4d5156"
+      },
+      "900": {
+        "value": "#333b3e"
+      }
+    }
+  },
+  "metadata": {
+    "provider": "Ollama",
+    "confidence": 0.85,
+    "reasoning": "AI-generated professional palette optimized for tech use",
+    "accessibility": {
+      "wcagCompliance": "AA",
+      "contrastIssues": [],
+      "colorBlindnessCompatible": true,
+      "recommendations": []
+    },
+    "context": {
+      "industry": "tech",
+      "audience": "professionals",
+      "medium": "web",
+      "accessibility": "high-contrast",
+      "cultural": "global",
+      "emotional": "professional"
+    },
+    "format": "style-dictionary",
+    "formatDisplayName": "Style Dictionary v3/v4",
+    "accessibilityScore": 50,
+    "generatedAt": "2025-09-26T14:06:39.001Z",
+    "version": "2.0",
+    "processingTime": 14070.277792,
+    "analysisMethod": "ReScript"
+  }
+}

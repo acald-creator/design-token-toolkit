@@ -1,0 +1,58 @@
+{
+  "colors": {
+    "$type": "color",
+    "$description": "AI-generated vibrant palette optimized for tech use",
+    "success-primary": {
+      "50": {
+        "$value": "#f7fff8",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#e3f2eb",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#c9d5c4",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#a1b7ac",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#809dbd",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#22c55e",
+        "$type": "color"
+      }
+    }
+  },
+  "metadata": {
+    "provider": "Ollama",
+    "confidence": 0.85,
+    "reasoning": "AI-generated vibrant palette optimized for tech use",
+    "accessibility": {
+      "wcagCompliance": "AA",
+      "contrastIssues": [],
+      "colorBlindnessCompatible": true,
+      "recommendations": []
+    },
+    "context": {
+      "industry": "tech",
+      "audience": "professionals",
+      "medium": "web",
+      "accessibility": "high-contrast",
+      "cultural": "global",
+      "emotional": "energetic"
+    },
+    "format": "w3c",
+    "formatDisplayName": "W3C Design Token Community Group",
+    "accessibilityScore": 50,
+    "generatedAt": "2025-09-26T14:43:43.940Z",
+    "version": "2.0",
+    "processingTime": 12006.223791999999,
+    "analysisMethod": "ReScript"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "colors": {
+    "$type": "color",
+    "$description": "AI-generated cool palette optimized for tech use",
+    "test-primary": {
+      "50": {
+        "$value": "#e5f0fd",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#c7d3e6",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#96b2da",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#7395ca",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#566bc9",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#4a54c8",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#473ea7",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#3e44b6",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#34335f",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#2d288f",
+        "$type": "color"
+      }
+    },
+    "test-secondary": {
+      "50": {
+        "$value": "#edf5ee",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#d9e4e8",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#c3daef",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#a7b6ca",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#708f97",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#536977",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#42546d",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#32344f",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#24283e",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#191b28",
+        "$type": "color"
+      }
+    },
+    "test-neutral": {
+      "50": {
+        "$value": "#f7fafc",
+        "$type": "color"
+      },
+      "100": {
+        "$value": "#f1f5f9",
+        "$type": "color"
+      },
+      "200": {
+        "$value": "#e2e8f0",
+        "$type": "color"
+      },
+      "300": {
+        "$value": "#cbd5e1",
+        "$type": "color"
+      },
+      "400": {
+        "$value": "#94a3b8",
+        "$type": "color"
+      },
+      "500": {
+        "$value": "#64748b",
+        "$type": "color"
+      },
+      "600": {
+        "$value": "#475569",
+        "$type": "color"
+      },
+      "700": {
+        "$value": "#334155",
+        "$type": "color"
+      },
+      "800": {
+        "$value": "#1e293b",
+        "$type": "color"
+      },
+      "900": {
+        "$value": "#0f172a",
+        "$type": "color"
+      }
+    }
+  },
+  "metadata": {
+    "provider": "Ollama",
+    "confidence": 0.85,
+    "reasoning": "AI-generated cool palette optimized for tech use",
+    "accessibility": {
+      "wcagCompliance": "AA",
+      "contrastIssues": [],
+      "colorBlindnessCompatible": true,
+      "recommendations": []
+    },
+    "context": {
+      "industry": "tech",
+      "audience": "professionals",
+      "medium": "web",
+      "accessibility": "high-contrast",
+      "cultural": "global",
+      "emotional": "trustworthy"
+    },
+    "format": "w3c",
+    "formatDisplayName": "W3C Design Token Community Group",
+    "accessibilityScore": 50,
+    "generatedAt": "2025-09-26T14:05:25.722Z",
+    "version": "2.0",
+    "processingTime": 12138.37875,
+    "analysisMethod": "ReScript"
+  }
+}

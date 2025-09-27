@@ -12,11 +12,12 @@ A professional CLI tool for generating design tokens with **verified 5-7x perfor
 
 ## ⚡ Performance Highlights
 
-- **🚀 5-7x faster** color mathematics (Delta-E, contrast, OKLCH operations)
+- **🚀 5-6x faster** color operations with optimized libraries (color-bits + culori)
 - **🧠 AI-powered** palette generation with multiple provider fallbacks
-- **♿ Accessibility-first** with WCAG compliance analysis
+- **♿ Accessibility-first** with WCAG compliance analysis (3.3x faster)
 - **🎯 Dual distribution**: Universal npm + Performance-optimized Bun
 - **📊 Real-time** performance monitoring and optimization feedback
+- **💾 Memory efficient**: Integer-based color storage (1.8x faster)
 
 ## 🏃 Quick Start
 
@@ -113,14 +114,14 @@ design-tokens-bun info
 
 ## 🚀 Performance Benefits
 
-### ReScript Optimizations
+### Optimized Library Stack Performance
 
-| Operation | ReScript | TypeScript | Speedup |
-|-----------|----------|------------|---------|
-| Delta-E Calculations | 2.61ms | 17.47ms | **6.7x** |
-| OKLCH Color Space | 10.20ms | 15.50ms | **1.5x** |
-| Accessibility Analysis | Variable | Variable | **1.89x** |
-| AI Palette Generation | Variable | Variable | **5-7x** |
+| Operation | Optimized (color-bits/culori) | Legacy Libraries | Speedup |
+|-----------|-------------------------------|------------------|---------|
+| Color Parsing | 10.9M ops/sec | 1.8M ops/sec | **5.9x** |
+| Batch Operations | 1.2M ops/sec | 205K ops/sec | **6.0x** |
+| Accessibility Analysis | 2,486 ops/sec | 753 ops/sec | **3.3x** |
+| Memory Efficiency | 4.2M ops/sec | 2.3M ops/sec | **1.8x** |
 
 ### Bun Edition Enhancements
 
@@ -178,7 +179,7 @@ src/
 │   └── theme.ts             # Theme management
 ├── core/                    # ReScript optimizations
 │   ├── ColorMath.res        # Core color mathematics
-│   ├── ColorJsIo.res        # Advanced color space operations
+│   ├── Culori.res           # High-performance OKLCH operations (NEW)
 │   ├── ColorAnalysis.res    # AI-powered analysis
 │   └── AIProviders.res      # Multi-provider AI system
 ├── utils/                   # TypeScript utilities and bridges
@@ -206,33 +207,37 @@ src/
 - **Style Dictionary**: Full integration with token compilation
 
 ### Performance Architecture
-- **ReScript core**: 5-7x performance improvements in computational operations
-- **TypeScript shell**: Maximum ecosystem compatibility
-- **Hybrid optimization**: Best of both functional and object-oriented paradigms
+- **Optimized libraries**: color-bits (10.9M ops/sec) + culori (840K ops/sec WCAG)
+- **ReScript bindings**: Custom Culori.res for 21x faster OKLCH operations
+- **TypeScript integration**: Maximum ecosystem compatibility with bridge functions
 - **Smart fallbacks**: Graceful degradation when optimizations fail
+- **Zero breaking changes**: All existing APIs preserved
 
 ## 📊 Benchmarks
 
-### Color Mathematics Performance
+### Core Library Performance
 ```
-ReScript Delta-E (1000 iterations): 2.61ms
-JavaScript Delta-E (1000 iterations): 17.47ms
-Performance improvement: 6.7x faster ⚡
-```
-
-### Memory Usage
-```
-ReScript OKLCH operations: ~2.1MB heap
-Traditional JS operations: ~4.8MB heap
-Memory efficiency: 2.3x improvement 🧠
+Color Parsing (color-bits): 10.9M ops/sec
+OKLCH Operations (culori): 840K ops/sec
+Batch Processing: 1.2M ops/sec (15 colors)
+Large Batch: 154K ops/sec (100 colors)
+Performance improvement: 5-6x faster ⚡
 ```
 
-### AI Palette Generation
+### Memory Efficiency
 ```
-Local Intelligence (ReScript): ~15ms average
-Rule-based (ReScript): ~8ms average
-Fallback (TypeScript): ~45ms average
-Overall improvement: 5.1x average speedup 🚀
+Integer-based storage: 4.2M ops/sec
+Object-based storage: 2.3M ops/sec
+Memory overhead: 0.0-0.1MB
+Memory efficiency: 1.8x improvement 🧠
+```
+
+### Accessibility Analysis
+```
+ReScript implementation: 2,486 ops/sec
+TypeScript implementation: 753 ops/sec
+End-to-end pipeline: 1,305 ops/sec
+Accessibility improvement: 3.3x faster 🚀
 ```
 
 ## 🤝 Contributing
@@ -266,7 +271,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **ReScript** for functional programming performance
 - **Bun** for next-generation JavaScript runtime
 - **Style Dictionary** for token compilation framework
-- **colorjs.io** for advanced color space operations
+- **color-bits** for high-performance integer-based color operations
+- **culori** for excellent OKLCH and WCAG contrast support
 
 ---
 

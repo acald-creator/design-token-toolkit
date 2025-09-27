@@ -4,7 +4,7 @@
  */
 
 import { Ollama } from 'ollama';
-import chroma from 'chroma-js';
+import { wcagContrast } from 'culori';
 import {
   generateLocalIntelligencePalette,
   generateRuleBasedPalette,
@@ -280,8 +280,8 @@ Ensure all hex codes are valid, harmonious, and ${request.accessibility ? 'meet 
     // Check primary color contrast
     const primary500 = tokens.color.primary['500']?.value;
     if (primary500) {
-      const contrastWhite = chroma.contrast(primary500, '#ffffff');
-      const contrastBlack = chroma.contrast(primary500, '#000000');
+      const contrastWhite = wcagContrast(primary500, '#ffffff');
+      const contrastBlack = wcagContrast(primary500, '#000000');
 
       if (Math.max(contrastWhite, contrastBlack) < 4.5) {
         issues.push('Primary color may have insufficient contrast for text');

@@ -58,10 +58,19 @@ interface AccessibilityAnalysis {
  */
 
 /**
- * Convert hex to RGB using ReScript implementation
+ * Convert hex to RGB - simple implementation
  */
 export function hexToRgb(hex: string): ColorMath.color {
-  return ColorMath.hexToRgb(hex);
+  // Simple hex to RGB conversion
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (result) {
+    return {
+      r: parseInt(result[1], 16) / 255,
+      g: parseInt(result[2], 16) / 255,
+      b: parseInt(result[3], 16) / 255
+    };
+  }
+  return { r: 0, g: 0, b: 0 }; // Fallback to black
 }
 
 /**
@@ -80,7 +89,10 @@ export function rgbToHex(rgb: ColorMath.color): string {
  */
 export function calculateDeltaE(color1: string, color2: string): number {
   try {
-    return ColorMath.calculateDeltaE(color1, color2);
+    // Convert hex to RGB first
+    const rgb1 = hexToRgb(color1);
+    const rgb2 = hexToRgb(color2);
+    return ColorMath.deltaE(rgb1, rgb2);
   } catch (error) {
     console.warn('ReScript DeltaE calculation failed:', error);
     return 50.0; // Default fallback value
@@ -92,7 +104,10 @@ export function calculateDeltaE(color1: string, color2: string): number {
  */
 export function calculateContrastRatio(color1: string, color2: string): number {
   try {
-    return ColorMath.calculateContrastRatio(color1, color2);
+    // Convert hex to RGB first
+    const rgb1 = hexToRgb(color1);
+    const rgb2 = hexToRgb(color2);
+    return ColorMath.contrastRatio(rgb1, rgb2);
   } catch (error) {
     console.warn('ReScript contrast calculation failed, using culori fallback:', error);
     try {
@@ -117,11 +132,11 @@ export function analyzeAccessibilityComprehensiveReScript(
     console.warn('ReScript accessibility analysis failed:', error);
     // Return minimal fallback structure
     return {
-      wcagCompliance: 'partial' as any,
-      issues: ['Analysis failed - using fallback'],
-      recommendations: ['Manual accessibility review recommended'],
-      colorBlindnessCompatible: false,
-      contrastResults: []
+      overallScore: 50,
+      wcagCompliance: 'Partial' as any,
+      colorBlindnessScore: 50,
+      contrastIssues: [],
+      problematicPairs: []
     };
   }
 }

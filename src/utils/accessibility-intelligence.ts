@@ -334,14 +334,8 @@ export class AccessibilityIntelligence {
       ]
     };
 
-    const matrix = matrices[type];
-    const newRgb = [
-      matrix[0][0] * rgb[0] + matrix[0][1] * rgb[1] + matrix[0][2] * rgb[2],
-      matrix[1][0] * rgb[0] + matrix[1][1] * rgb[1] + matrix[1][2] * rgb[2],
-      matrix[2][0] * rgb[0] + matrix[2][1] * rgb[1] + matrix[2][2] * rgb[2]
-    ];
-
     // Return simplified color for now
+    // Full implementation would apply the transformation matrix
     return color;
   }
 
